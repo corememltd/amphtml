@@ -243,6 +243,12 @@ const RTC_VENDORS = jsonConfiguration({
     macros: ['TAG_ID', 'CONSENT_STRING', 'ACCOUNT_ID'],
     disableKeyAppend: true,
   },
+  adloox: {
+    url: 'https://p.adlooxtracking.com/q?o=a&c=CLIENT_ID&t=TAG_ID&p=PLATFORM_ID&pn=CANONICAL_URL&s=ATTR(data-slot)&pm=PARAMS',
+    macros: ['CLIENT_ID', 'TAG_ID', 'PLATFORM_ID', 'PARAMS'],
+    errorReportingUrl: 'https://p.adlooxtracking.com/e?o=a&c=CLIENT_ID&t=TAG_ID&p=PLATFORM_ID&pn=HREF&e=ERROR_TYPE',
+    disableKeyAppend: true,
+  },
 });
 
 // DO NOT MODIFY: Setup for tests

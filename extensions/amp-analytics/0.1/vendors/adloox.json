@@ -1,0 +1,45 @@
+{
+  "vars": {
+    "_sid": "1$REPLACE($HASH(${pageViewId64}${clientId(adloox)})${pageViewId},[^0-9])$SUBSTR(${navTiming(navigationStart)},10)",
+    "id11": "$ADLOOX_WEBSITE"
+  },
+  "requestOrigin": "https://pixel.adlooxtracking.com",
+  "requests": {
+    "_params": "client=${client}&campagne=${client_id}&banniere=0&visite_id=${_sid}",
+    "_ids": "id1=${id1}&id2=${id2}&id3=${id3}&id4=${id4}&id5=${id5}&id6=${id6}&id7=${id7}&id8=${id8}&id9=${id9}&id10=${id10}&id11=${id11}&id12=${id12}&id13=${id13}&id14=${id14}&id15=${id15}&id16=${id16}&id17=${id17}&id18=${id18}&id19=${id19}&id20=${id20}",
+    "track": "/ads/ic.php?&adloox_io=1&${_params}&tagid=${tag_id}&plat=${platform_id}&timezone=${timezone}&js=amp&date_regen=${ampVersion}&fw=4&version=4&resolution=${screenWidth}x${screenHeight}&nav_lang=${browserLanguage}&fai=${title}&url_referrer=${canonicalUrl}&${_ids}",
+    "view": "/ads/iv2.php?${_params}&size=${elementWidth}x${elementHeight}&atf=$IF($MATCH(${loadTimeVisibility},^[5-9][0-9]$|^100$),2,0)"
+  },
+  "triggers": {
+    "track": {
+      "on": "render-start",
+      "request": "track",
+      "selector": "amp-ad",
+      "extraUrlParams": {
+        "type_crea": "2"
+      }
+    },
+    "rendered": {
+      "on": "visible",
+      "waitFor": "ini-load",
+      "request": "view",
+      "selector": "amp-ad",
+      "extraUrlParams": {
+        "visible": "0"
+      }
+    },
+    "view": {
+      "on": "visible",
+      "waitFor": "ini-load",
+      "request": "view",
+      "selector": "amp-ad",
+      "visibilitySpec": {
+        "visiblePercentageMin": 50,
+        "continuousTimeMin": 1000
+      },
+      "extraUrlParams": {
+        "visible": "2"
+      }
+    }
+  }
+}
